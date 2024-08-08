@@ -29,9 +29,9 @@ To use Gmail's SMTP server, you need to create an App Password:
 Create a file named `.env` in the root directory of your project and add the following lines:
 
 ```env
-SENDER_MAIL=your_email@gmail.com
-APP_PASSWORD=your_app_password
-RECIPIENT_MAIL=recipient_email@example.com
+SENDER_MAIL = your_email@gmail.com
+APP_PASSWORD = your_app_password
+RECIPIENT_MAIL = recipient_email@example.com
 ```
 
 Replace `your_email@gmail.com`, `your_app_password`, and `recipient_email@example.com` with your actual email addresses and the generated app password.
