@@ -1,19 +1,18 @@
-# Email Sender Python Script
+# Email Sending Application
 
-This Python script allows you to send multiple emails using an SMTP server. It uses a context manager to handle the SMTP connection and timing, and provides a class-based approach for sending emails.
+This project allows you to send emails using either a Python script or a Streamlit web application. It utilizes an SMTP server to handle email delivery and provides options for sending emails through a command-line script or a user-friendly web interface.
 
 ## Requirements
 
 - Python 3.x
 - `python-dotenv` library
-- `smtplib` (standard library)
-- `email` (standard library)
+- `streamlit` library
 
 ## Setup
 
 ### 1. Create a Google App Password
 
-To use Gmail's SMTP server, you need to create an App Password:
+To use Gmail's SMTP server, you need to create a Google App Password:
 
 1. **Enable 2-Step Verification**:
    - Go to your [Google Account Security page](https://myaccount.google.com/security).
@@ -28,10 +27,10 @@ To use Gmail's SMTP server, you need to create an App Password:
 
 Create a file named `.env` in the root directory of your project and add the following lines:
 
-```env
-SENDER_MAIL = your_email@gmail.com
-APP_PASSWORD = your_app_password
-RECIPIENT_MAIL = recipient_email@example.com
+```python
+SENDER_MAIL=your_email@gmail.com
+APP_PASSWORD=your_app_password
+RECIPIENT_MAIL=recipient_email@example.com
 ```
 
 Replace `your_email@gmail.com`, `your_app_password`, and `recipient_email@example.com` with your actual email addresses and the generated app password.
@@ -40,42 +39,55 @@ Replace `your_email@gmail.com`, `your_app_password`, and `recipient_email@exampl
 
 Ensure you have the `python-dotenv` library installed. You can install it using pip:
 
-```
+```python
 pip install python-dotenv
 ```
 ## Usage
 
-### 1. `email_sender.py`
+### Option 1: Using `main.py`
 
-This file contains the `EmailSender` class, which handles the SMTP connection and email sending. It provides methods to manage the connection and send emails.
+To send emails using the `main.py` script:
 
-### 2. `main.py`
+1. **Create a `.env` file**:
+   - In the root directory of your project, create a file named `.env`.
 
-This file uses the `EmailSender` class to send emails. You can customize the subject, body, and number of emails to be sent.
+2. **Edit `main.py`**:
+   - Open `main.py` and update the `send_emails` method call with your desired subject, body text, and the number of emails to send. The default line:
 
-Create a Python script (e.g., `main.py`) with the following content:
+     ```python
+     email_sender.send_emails(recipient_email, "Custom Subject", "Custom body text", 5)
+     ```
+
+     can be modified. For example, to set a custom subject, body, and send 10 emails, update it to:
+
+     ```python
+     email_sender.send_emails(recipient_email, "Your Subject Here", "Your body text here", 10)
+     ```
+
+3. **Run the Script**:
+
+     Execute `main.py` by running:
+
+     ```python
+     python main.py
+     ```
+
+     This will send the specified number of emails with the given subject and body text to the recipient.
+
+### Option 2: Using `email_sender_streamlit.py`
+This script provides a web interface for sending emails using Streamlit.
+
+Run the Streamlit application with:
 
 ```python
-import os
-from dotenv import load_dotenv
-from email_sender import EmailSender  # Import the EmailSender class from email_sender.py
-
-# Load environment variables
-load_dotenv()
-
-# Email configuration
-sender_email = os.getenv("SENDER_MAIL")
-app_password = os.getenv("APP_PASSWORD")
-recipient_email = os.getenv("RECIPIENT_MAIL")
-
-# Create an EmailSender instance
-email_sender = EmailSender(sender_email, app_password)
-
-# Send 5 emails with a custom subject and body
-email_sender.send_emails(recipient_email, "Custom Subject", "Custom body text", 5)
+streamlit run email_sender_streamlit.py
 ```
 
-Replace `your_script_name` with the name of your Python script file that contains the `EmailSender` class.
+You will be prompted to enter your email and password in the sidebar. Follow the instructions to generate a Google App Password if needed. Then, you can compose and send emails through the web interface.
+
+![streamlit_interface](https://github.com/user-attachments/assets/1eeeafac-1205-491f-a020-f67c0e9c2ac8)
+
+
 
 ## Notes
 - Make sure your .env file is included in your .gitignore to prevent exposing sensitive information.
