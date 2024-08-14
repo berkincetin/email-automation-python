@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 # Email Sending Application
 
 This project allows you to send emails using either a Python script or a Streamlit web application. It utilizes an SMTP server to handle email delivery and provides options for sending emails through a command-line script or a user-friendly web interface.
