@@ -91,4 +91,10 @@ You will be prompted to enter your email and password in the sidebar. Follow the
 
 ## Notes
 - Make sure your .env file is included in your .gitignore to prevent exposing sensitive information.
-- This script is configured for use with Gmail. For other email services, you may need to adjust the SMTP settings.#email-automation-python
+- This script is configured for use with Gmail. For other email services, you may need to adjust the SMTP settings.
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
